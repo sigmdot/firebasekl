@@ -1,32 +1,54 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Top></Top>
+    <nav>
+      <li>
+        <router-link to="/login"> Login </router-link>
+      </li>
+      <li>
+        <router-link to="/register"> Registro </router-link>
+      </li>
+      <li>
+        <router-link to="/"> Home </router-link>
+      </li>
+      <li>
+        <router-link to="/about"> About </router-link>
+      </li>
+      <li>
+        <router-link to="/secreto"> Secreto </router-link>
+      </li>
+      <li>
+        <router-link to="/profile">Profile</router-link>
+      </li>
+    </nav>
+
+    <router-view></router-view>
   </div>
 </template>
+<script>
+import { db } from '@/firebase';
 
+const documentPath = 'Mensajes/0d7ZqCxH86hed7pJTLQd'
+import Top from '@/components/Top.vue'
+export default {
+  components:{
+    Top
+  },
+  data(){
+    return{
+      firebaseData:null,
+      fireCollection:null,
+      mensajes:null
+    };
+  },
+  firestore(){
+    return{
+      firebaseData: db.doc(documentPath),
+      fireCollection: db.collection('Mensajes')
+    };
+  },
+};
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
