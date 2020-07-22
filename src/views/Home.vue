@@ -19,7 +19,7 @@
     <br>
     <audio :src="selected.url" controls controlsList="nodownload" v-if="selected"></audio>
     
-    <progress :value="progresso"></progress>
+    <progress :value="progresso/100"></progress>
     {{progresso}}
     {{dataCancion}}
   </div>
@@ -89,7 +89,7 @@ export default {
         function(error) {
           alert(error);
         },
-        function() {
+        ()=> {
           uploadTask.snapshot.ref.getDownloadURL().then((downloadURL)=> {
             console.log("File disponible", downloadURL);
             anonimo.doc(id).update({
@@ -98,6 +98,7 @@ export default {
             event.target.reset();
             
           });
+          this.progresso = 0;
         }
       );
       this.dataCancion.nombre = null;
@@ -105,13 +106,9 @@ export default {
       this.dataCancion.artista = null;
       this.dataCancion.album = null;
     },
-    async getFiles() {
-      this.$store.getters.rolas;
-    },
     cambiarRola(numero){
       console.log(numero);
       this.selected =this.rolas[numero];
-
       console.log(this.player.controls);
     }
   }
@@ -120,10 +117,6 @@ export default {
     return{
       rolas: anonimo
     }
-  }
-  ,
-  created() {
-    this.getFiles();
   }
 };
 </script>

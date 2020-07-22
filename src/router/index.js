@@ -7,6 +7,7 @@ import Secreto from '../views/Secreto.vue'
 import store from '@/store'
 import Profile from '../views/Profile.vue'
 import Error404 from '../views/Error.vue'
+import Visualizer from '../views/AudioVisualizer.vue'
 import {fire} from '@/firebase.js'
 
 Vue.use(VueRouter)
@@ -48,6 +49,11 @@ Vue.use(VueRouter)
     name:'Profile',
     component:Profile,
     meta:{Auth:true}
+  },
+  {
+    path: '/visualizer',
+    name: 'Visualizer',
+    component: Visualizer
   },
   {
     path:'/*',

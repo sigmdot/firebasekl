@@ -20,6 +20,9 @@
       <li>
         <router-link to="/profile">Profile</router-link>
       </li>
+      <li>
+        <router-link to="/visualizer">Audio visualizer</router-link>
+      </li>
     </nav>
 
     <router-view></router-view>

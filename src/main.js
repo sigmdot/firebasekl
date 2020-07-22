@@ -5,6 +5,9 @@ import store from './store'
 import { firestorePlugin } from 'vuefire'
 import axios from 'axios';
 import {fire } from './firebase.js'
+import AudioVisual from 'vue-audio-visual'
+
+Vue.use(AudioVisual)
 
 Vue.prototype.$axios = axios;
 Vue.use(firestorePlugin);
